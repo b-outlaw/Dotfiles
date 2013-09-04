@@ -1,18 +1,37 @@
 [core]
     # global gitignore
     excludesfile = /Users/b_outlaw/.gitignore
+
 [user]
     # information about you that will appear in commit history
-	name = b-outlaw
-	email = b.outlaw@brandonoutlaw.com
+    name = b-outlaw
+    email = brandon.outlaw@weareinstrument.com
+
 [color]
-    # yay, color for everything
+    branch = auto
     diff = auto
     status = auto
-    branch = auto
+
+[color "branch"]
+    current = red reverse
+    local = blue
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
 [apply]
     # ignore trailing whitespace
     whitespace = nowarn
+
 [alias]
     ai = add --interactive
     ap = add --patch
@@ -23,7 +42,6 @@
     ci = commit
     cia = commit --amend
     ciaa = commit --amend -a
-    # cif = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
     cim = commit -m
     cima = commit -a -m
     co = checkout
@@ -34,10 +52,21 @@
     rp = remote prune origin
     sh = show HEAD
     sl = stash list
-    sp = stash pop 
+    sp = stash pop
     ss = stash save
     st = status -sb
     l = log -n 15 --pretty=format:'%C(yellow)%h %Cred%an %Cgreen%ar%n        %Creset%s%n'
     wc = whatchanged -n 1
+
+    #list commands
+    le = log --oneline --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    lds = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
+    ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+
+    # diff
+    diff = diff --word-diff
+    d = diff --word-diff
+
 [pull]
-	rebase = true
+    rebase = true
