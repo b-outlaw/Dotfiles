@@ -5,12 +5,13 @@
 [user]
     # information about you that will appear in commit history
     name = b-outlaw
-    email = brandon.outlaw@weareinstrument.com
+    email = outlabl@gmail.com
 
 [color]
     branch = auto
     diff = auto
     status = auto
+	ui = true
 
 [color "branch"]
     current = red reverse
@@ -33,6 +34,7 @@
     whitespace = nowarn
 
 [alias]
+    branch-name = "!git rev-parse --abbrev-ref HEAD"
     ai = add --interactive
     ap = add --patch
     d = diff
@@ -45,7 +47,10 @@
     cim = commit -m
     cima = commit -a -m
     co = checkout
+    count = rev-list master.. --count
     cp = cherry-pick
+    pl = "!git pull origin $(git branch-name)"
+    ps = "!git push origin $(git branch-name)"
     ri = rebase --interactive
     rc = rebase --continue
     ra = rebase --abort
@@ -57,6 +62,7 @@
     st = status -sb
     l = log -n 15 --pretty=format:'%C(yellow)%h %Cred%an %Cgreen%ar%n        %Creset%s%n'
     wc = whatchanged -n 1
+    ad = !sh -c 'git add -- "$@" && git st' --
 
     #list commands
     le = log --oneline --decorate
